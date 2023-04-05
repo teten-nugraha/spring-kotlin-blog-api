@@ -1,1 +1,21 @@
+server:
+  port: 8081
 
+spring:
+  datasource:
+    url: &dbURL jdbc:mysql://localhost:3306/spring-kotlin-blog-api
+    username: &dbUser root
+    password: &dbPassword password
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+  main:
+    allow-circular-references: true #need to fix this
+
+psManager:
+  app:
+    jwtSecret: 9B2251C9220C106B009DDDEA18499CF48E152FF5C37C448E732B0F2102F545AB
+    jwtExpirationMs: 86400000
