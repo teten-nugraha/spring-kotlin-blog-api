@@ -12,10 +12,10 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 
 @Service
-class KategoriServiceImpl: KategoriService {
+class KategoriServiceImpl(
+    private val kategoriRepository: KategoriRepository
+): KategoriService {
 
-    @Autowired
-    lateinit var kategoriRepository: KategoriRepository
     override fun addKategori(kategoriRequest: KategoriRequest): ResponseEntity<Any> {
 
         if(kategoriRepository.existsByName(kategoriRequest.name)){
