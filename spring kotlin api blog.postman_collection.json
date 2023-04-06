@@ -1,0 +1,386 @@
+{
+	"info": {
+		"_postman_id": "a3f74ff9-5137-451b-96f4-ca2e388e23d8",
+		"name": "spring kotlin api blog",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18682900"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"teten\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/auth/login",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\" : \"teten\",\n    \"password\" : \"12345678\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/register",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "kategories",
+			"item": [
+				{
+					"name": "get kategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDY3OTI2NCwiZXhwIjoxNjgwNzY1NjY0fQ.5MuXu4MHSHrbWB_obomtkHlvgQ5RuyqMZVcvFCLBS686SDSFtE8qNmZlNf9ichP8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/kategories",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"kategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get kategories by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDY3OTI2NCwiZXhwIjoxNjgwNzY1NjY0fQ.5MuXu4MHSHrbWB_obomtkHlvgQ5RuyqMZVcvFCLBS686SDSFtE8qNmZlNf9ichP8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/kategories/12",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"kategories",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete kategori",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDY3OTI2NCwiZXhwIjoxNjgwNzY1NjY0fQ.5MuXu4MHSHrbWB_obomtkHlvgQ5RuyqMZVcvFCLBS686SDSFtE8qNmZlNf9ichP8",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/kategories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"kategories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create kategori",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDY3OTI2NCwiZXhwIjoxNjgwNzY1NjY0fQ.5MuXu4MHSHrbWB_obomtkHlvgQ5RuyqMZVcvFCLBS686SDSFtE8qNmZlNf9ichP8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Programming\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/kategories",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"kategories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update kategori",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDY3OTI2NCwiZXhwIjoxNjgwNzY1NjY0fQ.5MuXu4MHSHrbWB_obomtkHlvgQ5RuyqMZVcvFCLBS686SDSFtE8qNmZlNf9ichP8",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Economic Major\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/api/kategories/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"kategories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "posts",
+			"item": [
+				{
+					"name": "get posts all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDc0ODQ0MiwiZXhwIjoxNjgwODM0ODQyfQ._hEBrPSmlN5hOQ5G52QsbcXZEE4I3kA6SMdMTsvihNrwaZLNPhpNcawS7tUGL73R",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get posts by id",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDc0ODQ0MiwiZXhwIjoxNjgwODM0ODQyfQ._hEBrPSmlN5hOQ5G52QsbcXZEE4I3kA6SMdMTsvihNrwaZLNPhpNcawS7tUGL73R",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/posts/post/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get posts by title",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDc0ODQ0MiwiZXhwIjoxNjgwODM0ODQyfQ._hEBrPSmlN5hOQ5G52QsbcXZEE4I3kA6SMdMTsvihNrwaZLNPhpNcawS7tUGL73R",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:8081/api/posts/post/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts",
+								"post",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDc0ODQ0MiwiZXhwIjoxNjgwODM0ODQyfQ._hEBrPSmlN5hOQ5G52QsbcXZEE4I3kA6SMdMTsvihNrwaZLNPhpNcawS7tUGL73R",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Pemrograman Scala\",\n    \"kategoriId\" : 1,\n    \"content\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed turpis eros. Proin porttitor eros lectus, non bibendum nisi viverra et. Vestibulum ante ipsum primis in faucibus orci luctus et.\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJ0ZXRlbiIsImlhdCI6MTY4MDc0ODQ0MiwiZXhwIjoxNjgwODM0ODQyfQ._hEBrPSmlN5hOQ5G52QsbcXZEE4I3kA6SMdMTsvihNrwaZLNPhpNcawS7tUGL73R",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\" : \"Pemrograman Scala\",\n    \"kategoriId\" : 1,\n    \"content\" : \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sed turpis eros. Proin porttitor eros lectus, non bibendum nisi viverra et. Vestibulum ante ipsum primis in faucibus orci luctus et.\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8081/api/posts",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
