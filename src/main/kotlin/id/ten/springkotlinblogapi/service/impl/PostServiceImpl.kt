@@ -4,6 +4,7 @@ import id.ten.springkotlinblogapi.dto.requests.PostRequest
 import id.ten.springkotlinblogapi.dto.responses.PostResponse
 import id.ten.springkotlinblogapi.dto.responses.toResponse
 import id.ten.springkotlinblogapi.exceptions.BadRequestException
+import id.ten.springkotlinblogapi.exceptions.ResourceNotFoundException
 import id.ten.springkotlinblogapi.models.Post
 import id.ten.springkotlinblogapi.repository.KategoriRepository
 import id.ten.springkotlinblogapi.repository.PostRepository
@@ -33,7 +34,7 @@ class PostServiceImpl: PostService {
         }
 
         if(!kategoriRepository.existsById(postRequest.kategoriId)) {
-            throw BadRequestException("Kategori not found")
+            throw ResourceNotFoundException("Kategori not found")
         }
 
         val kategori = kategoriRepository.findById(postRequest.kategoriId).get()
@@ -54,11 +55,11 @@ class PostServiceImpl: PostService {
 
     override fun updatePost(id: Long, postRequest: PostRequest): ResponseEntity<PostResponse> {
         if(!postRepository.existsById(id)) {
-            throw BadRequestException("Post Not Found")
+            throw ResourceNotFoundException("Post Not Found")
         }
 
         if(!kategoriRepository.existsById(postRequest.kategoriId)) {
-            throw BadRequestException("Kategori not found")
+            throw ResourceNotFoundException("Kategori not found")
         }
 
         val kategori = kategoriRepository.findById(postRequest.kategoriId).get()
@@ -95,7 +96,7 @@ class PostServiceImpl: PostService {
 
     override fun findByTitle(title: String): ResponseEntity<PostResponse> {
         if(!postRepository.existsByTitle(title)){
-            throw BadRequestException("Title not found")
+            throw ResourceNotFoundException("Title not found")
         }
 
         val post = postRepository.findByTitle(title).get()

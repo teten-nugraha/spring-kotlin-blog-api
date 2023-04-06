@@ -3,6 +3,7 @@ package id.ten.springkotlinblogapi.service.impl
 import id.ten.springkotlinblogapi.dto.requests.KategoriRequest
 import id.ten.springkotlinblogapi.dto.responses.MessageResponse
 import id.ten.springkotlinblogapi.exceptions.BadRequestException
+import id.ten.springkotlinblogapi.exceptions.ResourceNotFoundException
 import id.ten.springkotlinblogapi.models.Kategori
 import id.ten.springkotlinblogapi.repository.KategoriRepository
 import id.ten.springkotlinblogapi.service.KategoriService
@@ -18,9 +19,7 @@ class KategoriServiceImpl: KategoriService {
     override fun addKategori(kategoriRequest: KategoriRequest): ResponseEntity<Any> {
 
         if(kategoriRepository.existsByName(kategoriRequest.name)){
-            return ResponseEntity
-                .badRequest()
-                .body(MessageResponse("Kategori name already taken"))
+            throw BadRequestException("Kategori name already taken")
         }
 
         val kategori = Kategori(
@@ -31,7 +30,7 @@ class KategoriServiceImpl: KategoriService {
 
     override fun updateKategori(id: Long, kategoriRequest: KategoriRequest): ResponseEntity<Any> {
 
-        val kategori = kategoriRepository.findById(id).orElseThrow{ BadRequestException("Error: kategori not found")}
+        val kategori = kategoriRepository.findById(id).orElseThrow{ ResourceNotFoundException("Error: kategori not found")}
         val updatedKategori = kategori.copy(
             name = kategoriRequest.name
         )
@@ -42,7 +41,7 @@ class KategoriServiceImpl: KategoriService {
     }
 
     override fun getKategoriById(id: Long): ResponseEntity<Any> {
-        val kategori = kategoriRepository.findById(id).orElseThrow{ BadRequestException("Error: kategori not found")}
+        val kategori = kategoriRepository.findById(id).orElseThrow{ ResourceNotFoundException("Error: kategori not found")}
         return ResponseEntity.ok()
             .body(kategori)
     }
@@ -50,7 +49,7 @@ class KategoriServiceImpl: KategoriService {
     override fun deleteKategoriById(id: Long) {
         kategoriRepository.findById(id)
             .map { kategoriRepository.deleteById(id) }
-            .orElseThrow{ BadRequestException("Error: kategori not found")}
+            .orElseThrow{ ResourceNotFoundException("Error: kategori not found")}
     }
 
     override fun getAll(): ResponseEntity<Any> {

@@ -3,6 +3,7 @@ package id.ten.springkotlinblogapi.service
 import id.ten.springkotlinblogapi.dto.requests.AuthRequest
 import id.ten.springkotlinblogapi.dto.responses.LoginResponse
 import id.ten.springkotlinblogapi.exceptions.BadRequestException
+import id.ten.springkotlinblogapi.exceptions.ResourceNotFoundException
 import id.ten.springkotlinblogapi.models.Role
 import id.ten.springkotlinblogapi.models.User
 import id.ten.springkotlinblogapi.repository.UserRepository
@@ -41,7 +42,7 @@ class AuthUserService: UserDetailsService {
     override fun loadUserByUsername(username: String?): UserDetails {
         val user =
             userRepository.findByUsername(username)
-                .orElseThrow{UsernameNotFoundException("Not found: $username")}
+                .orElseThrow{ResourceNotFoundException("Not found: $username")}
 
         return UserDetailImpl(user)
     }
@@ -50,7 +51,7 @@ class AuthUserService: UserDetailsService {
         val userDetail = loadUserByUsername(authRequest.username)
 
         if(!passwordEncoder.matches(authRequest.password, userDetail.password)){
-            throw BadCredentialsException("Invalid credentials")
+            throw BadRequestException("Invalid credentials")
         }
 
         if(!userDetail.isEnabled) {
