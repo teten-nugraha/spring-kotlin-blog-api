@@ -17,16 +17,11 @@ import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 
 @Service
-class PostServiceImpl: PostService {
-
-    @Autowired
-    private lateinit var postRepository: PostRepository
-
-    @Autowired
-    private lateinit var kategoriRepository: KategoriRepository
-
-    @Autowired
-    private lateinit var userRepository: UserRepository
+class PostServiceImpl(
+    private val postRepository: PostRepository,
+    private val kategoriRepository: KategoriRepository,
+    private val userRepository: UserRepository,
+): PostService {
 
     override fun addPost(postRequest: PostRequest): ResponseEntity<PostResponse> {
         if(postRepository.existsByTitle(postRequest.title)){

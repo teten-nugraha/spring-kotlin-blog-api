@@ -21,13 +21,10 @@ import javax.validation.Valid
 
 @RestController
 @RequestMapping(Constant.AUTH_PATH)
-class AuthController {
-
-    @Autowired
-    private lateinit var authService: AuthUserService
-
-    @Autowired
-    private lateinit var validationErrorProcesstor: ValidationErrorProcessor
+class AuthController(
+    private val authService: AuthUserService,
+    private val validationErrorProcesstor: ValidationErrorProcessor
+) {
 
     @PostMapping("/login")
     fun login(@Valid @RequestBody authRequest: AuthRequest): ResponseEntity<Any> {
